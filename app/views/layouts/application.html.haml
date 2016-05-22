@@ -52,12 +52,13 @@
               %a{:href => "#"} Link
             %li
               %a{:href => "#"} Link
-            %li
-              %a{:href => "#"} Link
-            %li
-              - if user_signed_in?
+            - if user_signed_in?
+              %li
+                = link_to 'Кабінет', user_root_path(current_user.nick_name)
+              %li
                 = link_to 'Вийти', destroy_user_session_path, :method => :delete
-              - else
+            - else
+              %li
                 =link_to 'Авторизація',user_session_path
                 -#= link_to 'Войти', new_user_session_path или link_to 'Зарегистрироваться', new_user_registration_path
             -#%li.dropdown

@@ -47,4 +47,14 @@ class User
 
   scope :get_user_by_nick_name, -> (nick){where(nick_name: nick)}
 
+  def is_performer?
+    roles.member? :performer
+  end
+  def is_customer?
+    roles.member? :customer
+  end
+  def is_admin?
+    roles.member? :admin
+  end
+
 end
