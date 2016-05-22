@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'home/home'
   get 'home/contacts'
 
-  get 'persons/profile', as: 'user_root'
+  get 'users/profile', as: 'user_root'
 
   # root 'application#home'
   # The priority is based upon order of creation: first created -> highest priority.
