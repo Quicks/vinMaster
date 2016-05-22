@@ -37,6 +37,11 @@ gem 'bootstrap_form'
 gem "haml-rails"
 gem 'therubyracer'
 gem 'devise'
+
+# https://github.com/CanCanCommunity/cancancan
+gem 'cancancan', '~> 1.10'
+gem 'role_model'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

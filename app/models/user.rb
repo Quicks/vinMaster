@@ -1,9 +1,18 @@
 class User
   include Mongoid::Document
+  include RoleModel
+
+  MINIMAL_NICK_NAME_LENGTH = 4
+  MAXIMUM_NICK_NAME_LENGTH = 20
+
+
+  field :nick_name ,type: String
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -23,14 +32,19 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  ## Confirmable
-  # field :confirmation_token,   type: String
-  # field :confirmed_at,         type: Time
-  # field :confirmation_sent_at, type: Time
-  # field :unconfirmed_email,    type: String # Only if using reconfirmable
+  # optionally set the integer attribute to store the roles in,
+  # :roles_mask is the default
+  field :roles_mask
+  roles_attribute :roles_mask
+  roles :admin,:performer,:customer
 
-  ## Lockable
-  # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
-  # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
-  # field :locked_at,       type: Time
+  validates :nick_name ,presence: true,
+            uniqueness: true,
+            length: {in: MINIMAL_NICK_NAME_LENGTH..MAXIMUM_NICK_NAME_LENGTH}
+
+  validates :roles ,presence: true
+
+
+  scope :get_user_by_nick_name, -> (nick){where(nick_name: nick)}
+
 end
