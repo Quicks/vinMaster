@@ -11,8 +11,13 @@ before_filter :user_params, only: [:create]
   def create
     # super
     @user = UsersByRoles::UserFactory.make_user(user_params)
-    binding.pry
-
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to user_root(@user), notice: 'Вітаємо' }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   # GET /resource/edit
