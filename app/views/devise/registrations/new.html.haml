@@ -6,7 +6,7 @@
     = f.email_field :email,label: 'Електрона пошта'
     .form-group
       = f.form_group :skill_level, label: { text: 'Ролі:' } do
-        = f.radio_button :roles, :performer, label: 'Виконавець', inline: true
+        = f.radio_button :roles, :performer, label: 'Виконавець', inline: true, checked: true
         = f.radio_button :roles, :customer, label: 'Замовник', inline: true
     =f.password_field :password,label: 'Пароль',autocomplete: "off"
     =f.password_field :password_confirmation,autocomplete: "off",label: 'Пароль еще раз'
