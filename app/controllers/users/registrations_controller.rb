@@ -14,7 +14,6 @@ before_filter :user_params, only: [:create]
     respond_to do |format|
       if @user.save
         sign_in(@user)
-        format.html { redirect_to user_root_path(@user.nick_name), notice: 'Вітаємо' }
       else
         format.html { render :new }
       end

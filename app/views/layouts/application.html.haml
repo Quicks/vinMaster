@@ -54,7 +54,8 @@
               %a{:href => "#"} Link
             - if user_signed_in?
               %li
-                = link_to 'Кабінет', user_root_path(current_user.nick_name)
+                -binding.pry
+                -#= link_to 'Кабінет', set_profile_path_by_user_role(current_user)
               %li
                 = link_to 'Вийти', destroy_user_session_path, :method => :delete
             - else

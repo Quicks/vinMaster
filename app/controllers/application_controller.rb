@@ -21,11 +21,33 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(resource)
-    user_root_path(resource.nick_name)
+    set_profile_path_by_user_role(resource)
   end
 
   def after_sign_out_path_for(resource_or_scope)
     root_path
+  end
+
+  def set_profile_path_by_user_role(user)
+    # this function return path to user module by user role
+    # if user is performer redirect to performer path
+    # else if user is customer redirect to customer path(now we going to root path,because i don't realize that scenario)
+    # else if user is admin redirect to admin path(now we going to root path,because i don't realize that scenario)
+    # by default redirect to root_path
+
+    if user.is_performer?
+      module_performer_show_path(user.nick_name)
+    elsif user.is_customer?
+      root_path
+    elsif user.is_admin?
+      root_path
+    else
+      root_path
+    end
+  private
+
+
+
   end
 
 end

@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   get 'home/contacts'
 
   # resources :users
-  get 'users/show/:nick' => 'users#show', as: 'user_root'
+  # get 'users/show/:nick' => 'users#show', as: 'user_root'
+
+  namespace :module,path: 'performer' do
+    get '/:nick' => 'performer#show', as: 'performer_show'
+  end
+
 
   # root 'application#home'
   # The priority is based upon order of creation: first created -> highest priority.
