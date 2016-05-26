@@ -8,7 +8,6 @@ class UsersByRoles::UserFactory
         user = UsersByRoles::Customer.new(user_params)
       when 'performer'
         user = UsersByRoles::Performer.new(user_params)
-        user.test = 'test'
       else
         raise 'Can not find user roles'
     end
