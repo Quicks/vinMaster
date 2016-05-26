@@ -6,7 +6,6 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
-  get 'persons/profile'
 
   root 'home#index'
 

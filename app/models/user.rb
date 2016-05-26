@@ -45,7 +45,7 @@ class User
   validates :roles ,presence: true
 
 
-  scope :get_user_by_nick_name, -> (nick){where(nick_name: nick)}
+  scope :get_user_by_nick_name,lambda { |nick| where(:nick_name => nick) }
 
   def is_performer?
     roles.member? :performer

@@ -13,7 +13,8 @@ before_filter :user_params, only: [:create]
     @user = UsersByRoles::UserFactory.make_user(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_root(@user), notice: 'Вітаємо' }
+        sign_in(@user)
+        format.html { redirect_to user_root_path(@user.nick_name), notice: 'Вітаємо' }
       else
         format.html { render :new }
       end
