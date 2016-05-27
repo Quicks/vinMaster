@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get '/:nick' => 'performer#show', as: 'performer_show'
   end
 
+  get 'cabinet' =>'cabinet#set_cabinet_url',as: 'cabinet'
 
   # root 'application#home'
   # The priority is based upon order of creation: first created -> highest priority.

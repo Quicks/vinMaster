@@ -54,7 +54,7 @@
               %a{:href => "#"} Link
             - if user_signed_in?
               %li
-                = link_to 'Кабінет', @cabinet_url
+                = link_to 'Кабінет', cabinet_path
               %li
                 = link_to 'Вийти', destroy_user_session_path, :method => :delete
             - else

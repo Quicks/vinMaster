@@ -4,12 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
-  before_action :set_cabinet_url
-
-  def set_cabinet_url
-    @cabinet_url = set_profile_path_by_user_role(current_user)
-  end
-
   protected
 
   def redirect_to_back(default = root_url)
@@ -27,30 +21,13 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(resource)
-    set_profile_path_by_user_role(resource)
+    cabinet_path
   end
 
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
 
-  def set_profile_path_by_user_role(user)
-    # this function return path to user module by user role
-    # if user is performer redirect to performer path
-    # else if user is customer redirect to customer path(now we going to root path,because i don't realize that scenario)
-    # else if user is admin redirect to admin path(now we going to root path,because i don't realize that scenario)
-    # by default redirect to root_path
-    unless user.nil?
-      if user.is_performer?
-        module_performer_show_path(user.nick_name)
-      elsif user.is_customer?
-        root_path
-      elsif user.is_admin?
-        root_path
-      end
-    else
-      root_path
-    end
-  end
+
 
 end
