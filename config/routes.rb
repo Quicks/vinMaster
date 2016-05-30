@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     get '/:nick' => 'performer#show', as: 'performer_show'
   end
 
+  namespace :module,path: 'customer' do
+    get '/:nick' => 'customer#show', as: 'customer_show'
+  end
+
   get 'cabinet' =>'cabinet#set_cabinet_url',as: 'cabinet'
 
   # root 'application#home'

@@ -16,7 +16,7 @@ class CabinetController < ApplicationController
       if user.is_performer?
         module_performer_show_path(user.nick_name)
       elsif user.is_customer?
-        root_path
+        module_customer_show_path(user.nick_name)
       elsif user.is_admin?
         root_path
       end
