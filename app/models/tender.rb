@@ -8,6 +8,8 @@ class Tender
 
   belongs_to :author,class_name: 'User'
 
+  scope :get_by_author, -> (user){where(author: user)}
+
   validates :title,:description, presence: true
   validates :budget,numericality: {only_integer: true}
 

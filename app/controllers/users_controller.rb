@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_user
+  # before_action :check_user
 
   def check_user
     @user = User.get_user_by_nick_name(params[:nick]).first

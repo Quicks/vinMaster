@@ -17,10 +17,14 @@ Rails.application.routes.draw do
 
   namespace :module,path: 'performer' do
     get '/:nick' => 'performer#show', as: 'performer_show'
+
   end
 
   namespace :module,path: 'customer' do
     get '/:nick' => 'customer#show', as: 'customer_show'
+    namespace :customer_manage,path: 'manage' do
+      resources :tender
+    end
   end
 
   get 'cabinet' =>'cabinet#set_cabinet_url',as: 'cabinet'

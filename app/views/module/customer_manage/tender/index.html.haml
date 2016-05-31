@@ -1,0 +1,14 @@
+.col-md-12
+  %h2
+    Перегляд усіх Ваших тендерів
+  -unless @tenders.empty?
+    -@tenders.each do |tender|
+      .row
+        .col-md-2
+          -tender.title
+        .col-md-6
+          -tender.description
+        .action_button
+
+  -else
+    Ще не створено жодного тендеру
