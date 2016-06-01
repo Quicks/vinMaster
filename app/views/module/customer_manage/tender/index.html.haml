@@ -4,11 +4,13 @@
   -unless @tenders.empty?
     -@tenders.each do |tender|
       .row
-        .col-md-2
+        .col-md-3
           -tender.title
         .col-md-6
           -tender.description
-        .action_button
-
+        .col-md-3.action_button
+          =image_tag('crud_icons/loupe.png')
+          =image_tag('crud_icons/pencil.png')
+          =image_tag('crud_icons/X_icon.png')
   -else
     Ще не створено жодного тендеру
