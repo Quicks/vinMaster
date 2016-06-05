@@ -14,7 +14,7 @@ class Ability
     elsif user.has_role? :performer
       can :manage, :all
     elsif user.has_role? :customer
-      can :read, :all
+      can :manage, :all
     else
       can :read, :all
       # can :manage, :all

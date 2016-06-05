@@ -1,10 +1,16 @@
 :scss
   fieldset{
-    background: white;
+    //background: white;
   }
 
 .col-md-8
   =bootstrap_form_for @customer_tender, :html => { :class => 'form-vertical' } do |f|
-
     %fieldset
+      = f.text_field :title,label: 'Назва тендеру'
+      = f.text_area :description,label: 'Опис'
+      = f.text_field :address, label: 'Адреса'
+      = f.text_field :contact_data,label: 'Контактні дані'
+      = f.number_field :budget,label: 'Приблизний бюджет'
+      = f.submit 'Зберегти'
+
 
