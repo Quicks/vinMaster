@@ -1,21 +1,31 @@
 require 'rails_helper'
 
-RSpec.describe Module::CustomerManage::TenderController, type: :controller do
+RSpec.describe Module::CustomerManage::TendersController, type: :controller do
 
-  # subject(:customer){ FactoryGirl.create(:customer_user)}
+  before(:each)do
+    customer = create(:customer_user)
+    sign_in customer
+  end
 
-  # subject(:customer) { create(:customer_user) }
-  # before() do
-  #   sign_in(customer)
-  # end
-  describe 'create' do
-    it '#create' do
-      customer = create(:customer_user)
-      sign_in customer
+
+
+  describe 'new' do
+    it '#new' do
       get :new
-      response.should render_template(:partial => 'new')
+      expect(response).to render_template(:new)
     end
+  end
 
+  describe 'create' do
+    it '#create'do
+      get :create
+
+    end
+  end
+
+  after(:each)do
+    users = User.all
+    users.each { |user| user.destroy }
   end
 
 

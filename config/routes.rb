@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   namespace :module,path: 'customer' do
     get '/:nick' => 'customer#show', as: 'customer_show'
     namespace :customer_manage,path: 'manage' do
-      resources :tender
+      resources :tenders
     end
   end
 

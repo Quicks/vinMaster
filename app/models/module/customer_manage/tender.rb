@@ -1,4 +1,4 @@
-class Tender
+class Module::CustomerManage::Tender
   include Mongoid::Document
 
   field :title,type: String

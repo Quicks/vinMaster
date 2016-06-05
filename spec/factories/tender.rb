@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :tender do |f|
+  factory :tenders do |f|
     f.title = 'Title'
     f.description = 'Description'
 

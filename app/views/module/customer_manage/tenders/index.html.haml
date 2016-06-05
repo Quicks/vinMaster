@@ -1,6 +1,7 @@
 .col-md-12
   %h2
     Перегляд усіх Ваших тендерів
+  =link_to 'Створити тендер',new_module_customer_manage_tender_path
   -unless @tenders.empty?
     -@tenders.each do |tender|
       .row
