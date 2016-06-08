@@ -1,10 +1,11 @@
 require 'rails_helper'
-
+require 'support/tender_factories'
 RSpec.describe Module::CustomerManage::TendersController, type: :controller do
 
+
   before(:each)do
-    customer = create(:customer_user)
-    sign_in customer
+    @customer = create(:customer_user)
+    sign_in @customer
   end
 
 
@@ -18,8 +19,9 @@ RSpec.describe Module::CustomerManage::TendersController, type: :controller do
 
   describe 'create' do
     it '#create'do
-      get :create
-
+      post :create,{module_customer_manage_tender: attributes_for(:tender)}
+      expect(assigns[:customer_tender]).to be_valid
+      expect(response).to redirect_to(module_customer_manage_tender_path(assigns[:customer_tender]))
     end
   end
 
