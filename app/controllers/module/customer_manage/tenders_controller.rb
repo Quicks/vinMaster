@@ -1,7 +1,7 @@
 class Module::CustomerManage::TendersController < Module::CustomerController
   respond_to :html
 
-  before_action :set_customer_tender,only:[:show,:update]
+  before_action :set_customer_tender,only:[:show,:update,:edit]
 
   def index
     @tenders = Module::CustomerManage::Tender.get_by_author(current_user).to_a

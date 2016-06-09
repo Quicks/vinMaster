@@ -1,3 +1,4 @@
+
 .col-md-12
   %h2
     Перегляд усіх Ваших тендерів
@@ -6,12 +7,12 @@
     -@tenders.each do |tender|
       .row
         .col-md-3
-          -tender.title
+          =tender.title
         .col-md-6
-          -tender.description
+          =tender.description
         .col-md-3.action_button
-          =image_tag('crud_icons/loupe.png')
-          =image_tag('crud_icons/pencil.png')
-          =image_tag('crud_icons/X_icon.png')
+          = link_to image_tag('crud_icons/loupe.png'),module_customer_manage_tender_path(tender)
+          = link_to image_tag('crud_icons/pencil.png'),edit_module_customer_manage_tender_path(tender)
+          = link_to image_tag('crud_icons/X_icon.png'),module_customer_manage_tender_path(tender),method: :delete
   -else
     Ще не створено жодного тендеру

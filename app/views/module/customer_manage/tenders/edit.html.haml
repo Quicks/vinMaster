@@ -1,0 +1,9 @@
+.col-xs-12
+  %h2
+    Редагування тендеру
+.col-xs-12
+  =link_to 'Мої тендери',module_customer_manage_tenders_path,class: 'btn btn-primary'
+  =link_to 'Переглянути',module_customer_manage_tender_path(@customer_tender),class: 'btn btn-primary'
+.col-xs-12
+  =render 'form'
+
