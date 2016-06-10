@@ -1,4 +1,4 @@
-class Module::CustomerManage::TendersController < Module::CustomerController
+class Module::CustomerManage::TendersController < Module::ApplicationController
   respond_to :html
 
   before_action :set_customer_tender,only:[:show,:update,:edit]
@@ -19,14 +19,14 @@ class Module::CustomerManage::TendersController < Module::CustomerController
   end
 
   def edit
-
   end
 
   def show
   end
 
   def update
-
+    @customer_tender.update(customer_tender_params)
+    respond_with(@customer_tender)
   end
 
   private
