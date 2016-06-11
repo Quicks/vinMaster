@@ -4,7 +4,7 @@ class Module::CustomerManage::TendersController < Module::ApplicationController
   before_action :set_customer_tender,only:[:show,:update,:edit]
 
   def index
-    @tenders = Module::CustomerManage::Tender.get_by_author(current_user).to_a
+    @tenders = Module::CustomerManage::Tender.get_by_author(current_user).page(params[:page]).per(PAGINATE_PER_PAGE)
   end
 
   def new
