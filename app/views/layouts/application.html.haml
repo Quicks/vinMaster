@@ -1,5 +1,11 @@
 :scss
+  .container{
+    min-height: calc(94% - 61px - 60px);
+    margin-bottom: 20px;
+  }
   .alert{
+    padding: 0 !important;
+    margin-bottom: 0px !important;
     background-color: #eeeeee !important;
   }
   .action_button{
@@ -11,10 +17,10 @@
     background:black;
     width:100%;
     height:60px;
-    position:absolute;
-    bottom:0;
+    //position:absolute;
+    //bottom:0;
     color:whitesmoke;
-    left:0;
+    //left:0;
   }
 !!!
 %html
@@ -141,29 +147,37 @@
             - else
               %li
                 =link_to 'Авторизація',user_session_path
+    .container
+      .clear
+        %p.notice= notice
+        %p.alert= alert
+      = yield
 
-    %p.notice= notice
-    %p.alert= alert
-    = yield
-
-    -#%footer.page-footer.blue.center-on-small-only#footer
-    -#  .container-fluid
-    -#    .row
-    -#      .col-md-12
-    -#        %h5.white-text Footer Content
-    -#        %p.grey-text.text-lighten-4 Here you can use rows and columns here to organize your footer content.
-          -#.col-md-6
-          -#  %h5.white-text Links
-          -#  %ul
-          -#    %li
-          -#      %a.grey-text.text-lighten-3{:href => "#!"} Link 1
-          -#    %li
-          -#      %a.grey-text.text-lighten-3{:href => "#!"} Link 2
-          -#    %li
-          -#      %a.grey-text.text-lighten-3{:href => "#!"} Link 3
-          -#    %li
-          -#      %a.grey-text.text-lighten-3{:href => "#!"} Link 4
+    %footer.page-footer.blue.center-on-small-only#footer
+      dsadsadda
+      -#.container-fluid
+      -#  .row
+      -#    .col-md-12
+      -#      %h5.white-text Footer Content
+      -#      %p.grey-text.text-lighten-4 Here you can use rows and columns here to organize your footer content.
+      -#    .col-md-6
+      -#      %h5.white-text Links
+      -#      %ul
+      -#        %li
+      -#          %a.grey-text.text-lighten-3{:href => "#!"} Link 1
+      -#        %li
+      -#          %a.grey-text.text-lighten-3{:href => "#!"} Link 2
+      -#        %li
+      -#          %a.grey-text.text-lighten-3{:href => "#!"} Link 3
+      -#        %li
+      -#          %a.grey-text.text-lighten-3{:href => "#!"} Link 4
       -#.footer-copyright.text-center.rgba-black-light
       -#  .container-fluid
       -#    © 2015 Copyright:
       -#    %a{:href => "http://www.MDBootstrap.com"} MDBootstrap.com
+:javascript
+  $(document).ready(function() {
+      $('.alert').fadeOut(3000);
+      $('.notice').fadeOut(3000);
+
+    })

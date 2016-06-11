@@ -1,16 +1,28 @@
-
+:scss
+  .bold-font{
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
 .col-md-12
   %h2
     Перегляд усіх Ваших тендерів
-  =link_to 'Створити тендер',new_module_customer_manage_tender_path
+  =link_to 'Створити тендер',new_module_customer_manage_tender_path,class: 'btn btn-primary'
   -unless @tenders.empty?
+    .row.bold-font
+      .col-md-3
+        Назва
+      .col-md-6
+        Опис
+      .col-md-3.text-center
+        Дії
     -@tenders.each do |tender|
       .row
         .col-md-3
           =tender.title
         .col-md-6
           =tender.description
-        .col-md-3.action_button
+        .col-md-3.action_button.text-center
           = link_to image_tag('crud_icons/loupe.png'),module_customer_manage_tender_path(tender)
           = link_to image_tag('crud_icons/pencil.png'),edit_module_customer_manage_tender_path(tender)
           = link_to image_tag('crud_icons/X_icon.png'),module_customer_manage_tender_path(tender),method: :delete

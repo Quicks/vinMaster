@@ -14,7 +14,9 @@ class Module::CustomerManage::TendersController < Module::ApplicationController
   def create
     @customer_tender = Module::CustomerManage::Tender.new(customer_tender_params)
     @customer_tender.author = current_user
-    @customer_tender.save
+    if @customer_tender.save
+      flash[:notice] = 'Тендер було збережено'
+    end
     respond_with(@customer_tender)
   end
 
