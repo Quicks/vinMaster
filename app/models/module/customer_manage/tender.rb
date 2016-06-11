@@ -1,6 +1,7 @@
 class Module::CustomerManage::Tender
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ::Geocoder::Model::Mongoid
 
   field :title,type: String
   field :description,type: String
@@ -17,4 +18,9 @@ class Module::CustomerManage::Tender
   validates :title,:description,:author, presence: true
   validates :budget,numericality: {only_integer: true}
 
+  before_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+
+  def geocode
+    self.coordinates =  Geocoder.coordinates(address)
+  end
 end
