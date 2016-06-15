@@ -25,7 +25,7 @@ class Module::AdminManage::CategoriesController < Module::AdminController
   # POST /categories.json
   def create
     @category = Module::AdminManage::Category.new(category_params)
-
+    binding.pry
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
@@ -63,7 +63,7 @@ class Module::AdminManage::CategoriesController < Module::AdminController
 
   private
     def get_parents_category
-      @parent_categories = Category.get_parent_categories
+      @parent_categories = Module::AdminManage::Category.get_parent_categories
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_category
@@ -72,6 +72,6 @@ class Module::AdminManage::CategoriesController < Module::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:title,:p_id,:alias)
+      params.require(:module_admin_manage_category).permit(:title,:p_id,:alias)
     end
 end
