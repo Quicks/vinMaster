@@ -1,4 +1,4 @@
-class Module::AdminManage::CategoriesController < ApplicationController
+class Module::AdminManage::CategoriesController < Module::AdminController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :get_parents_category,only: [:new,:edit]
   # GET /categories

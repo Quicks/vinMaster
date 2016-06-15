@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :module,path: 'admin' do
+    get '/:nick' => 'admin#show',as: 'admin_show'
     namespace :admin_manage,path: 'manage' do
       resources :categories
     end

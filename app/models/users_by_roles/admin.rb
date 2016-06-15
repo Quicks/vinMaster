@@ -1,3 +1,3 @@
-class UsersByRoles::Admin
+class UsersByRoles::Admin < User
   include Mongoid::Document
 end
