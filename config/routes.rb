@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :module,path: 'admin' do
+    namespace :admin_manage,path: 'manage' do
+      resources :categories
+    end
 
-  resources :categories
+  end
   devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations'

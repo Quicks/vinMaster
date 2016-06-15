@@ -9,20 +9,22 @@ build_categories = ['Шпаклювальні роботи','Малярні ро
 dressing_categories = ['Покраска стелі','Покраска стін']
 other_categories = ['Інші']
 
-parent_build_categories = Category.new({title: 'Будівельні роботи',alias: 'build'})
-parent_dress_category = Category.new({title: 'Оздоблювальні роботи',alias: 'dress'})
-parent_other_category = Category.new({title: 'Додаткові роботи',alias: 'other'})
+parent_build_categories = Module::AdminManage::Category.new({title: 'Будівельні роботи',alias: 'build'})
+parent_dress_category = Module::AdminManage::Category.new({title: 'Оздоблювальні роботи',alias: 'dress'})
+parent_other_category = Module::AdminManage::Category.new({title: 'Додаткові роботи',alias: 'other'})
 
 parent_build_categories.save
 parent_dress_category.save
 parent_other_category.save
 
 build_categories.each do |build_category|
-  Category.new({title: build_category,p_id: parent_build_categories.id}).save
+
+  test = Module::AdminManage::Category.new({title: build_category,p_id: parent_build_categories.id})
+  test.save
 end
 dressing_categories.each do |dress_category|
-  Category.new({title: dress_category,p_id: parent_dress_category.id}).save
+  Module::AdminManage::Category.new({title: dress_category,p_id: parent_dress_category.id}).save
 end
 other_categories.each do |other_category|
-  Category.new({title: other_category,p_id: parent_other_category.id}).save
+  Module::AdminManage::Category.new({title: other_category,p_id: parent_other_category.id}).save
 end

@@ -1,0 +1,18 @@
+= bootstrap_form_for @category do |f|
+  = f.select :p_id,@parent_categories.map { |p_cat|[p_cat.title,p_cat.id]  },label: 'Виберіть категорію',prompt: 'Категорії'
+  = f.text_field :alias,label: 'Аліас категорії'
+  = f.text_field :title,label: 'Назва категорії'
+  = f.submit 'Save'
+
+:javascript
+  $(document).ready(function(){
+    $('#category_p_id').change(function() {
+      var alias_input_dom = $('#category_alias').parents('.form-group')
+      if($(this).val()){
+        alias_input_dom.hide('slow');
+      }else{
+        alias_input_dom.show('slow');
+      }
+    })
+
+  });

@@ -8,6 +8,8 @@ class UsersByRoles::UserFactory
         user = UsersByRoles::Customer.new(user_params)
       when 'performer'
         user = UsersByRoles::Performer.new(user_params)
+      when 'admin'
+        user = UsersByRoles::Admin.new(user_params)
       else
         raise 'Can not find user roles'
     end

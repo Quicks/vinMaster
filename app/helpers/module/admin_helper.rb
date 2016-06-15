@@ -1,0 +1,2 @@
+module Module::AdminHelper
+end
