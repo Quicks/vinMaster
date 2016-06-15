@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+build_categories = ['Шпаклювальні роботи','Малярні роботи','Гипсокартоні роботи']
+dressing_categories = ['Покраска стелі','Покраска стін']
+other_categories = ['Інші']
+
+parent_build_categories = Category.new({title: 'Будівельні роботи',alias: 'build'})
+parent_dress_category = Category.new({title: 'Оздоблювальні роботи',alias: 'dress'})
+parent_other_category = Category.new({title: 'Додаткові роботи',alias: 'other'})
+
+parent_build_categories.save
+parent_dress_category.save
+parent_other_category.save
+
+build_categories.each do |build_category|
+  Category.new({title: build_category,p_id: parent_build_categories.id}).save
+end
+dressing_categories.each do |dress_category|
+  Category.new({title: dress_category,p_id: parent_dress_category.id}).save
+end
+other_categories.each do |other_category|
+  Category.new({title: other_category,p_id: parent_other_category.id}).save
+end
