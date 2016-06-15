@@ -1,1 +1,11 @@
-index
+.row
+  Усі тендери
+-unless @tenders.empty?
+  =@tenders.each do |tender|
+    .row
+      .col-xs-6
+        =tender.title
+      .col-xs-6
+        =link_to 'Відгукнутися','#'
+-else
+  На данний момент немає жодного тендеру
