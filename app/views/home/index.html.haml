@@ -6,6 +6,16 @@
       .col-xs-6
         =tender.title
       .col-xs-6
-        =link_to 'Відгукнутися',new_module_performer_manage_tender_comment_path
+        - if current_user && current_user.is_performer?
+          =link_to 'Відгукнутися','',class: 'tender_comment btn btn-info'
 -else
   На данний момент немає жодного тендеру
+
+
+:javascript
+  $(document).ready(function() {
+    $('.tender_comment').click(function(){
+      $('#tender_comment_modal').modal();
+      return false;
+    });
+  });
