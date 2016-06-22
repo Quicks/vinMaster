@@ -1,0 +1,19 @@
+%h1 Listing module_performer_manage_tender_comments
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tender_comments.each do |module_performer_manage_tender_comment|
+      %tr
+        %td= link_to 'Show', module_performer_manage_tender_comment
+        %td= link_to 'Edit', edit_module_performer_manage_tender_comment_path(module_performer_manage_tender_comment)
+        %td= link_to 'Destroy', module_performer_manage_tender_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Tender comment', new_module_performer_manage_tender_comment_path

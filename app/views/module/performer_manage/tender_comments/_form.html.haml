@@ -1,0 +1,10 @@
+= form_for @tender_comment do |f|
+  - if @tender_comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tender_comment.errors.count, "error")} prohibited this module_performer_manage_tender_comment from being saved:"
+      %ul
+        - @tender_comment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

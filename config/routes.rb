@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :module do
+    namespace :performer_manage do
+      resources :tender_comments
+    end
+  end
   namespace :module,path: 'admin' do
     get '/:nick' => 'admin#show',as: 'admin_show'
     namespace :admin_manage,path: 'manage' do
