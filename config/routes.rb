@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   get 'cabinet' =>'cabinet#set_cabinet_url',as: 'cabinet'
 
+  get 'geo_json_tender' => 'geojson#get_tenders', as: 'tenders_in_geo_json'
   # root 'application#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

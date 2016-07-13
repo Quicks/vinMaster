@@ -24,7 +24,6 @@
 
 
 :javascript
-  $(document).ready(function() {
     var mymap = L.map('map').setView([48.5, 31.2], 6);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -34,5 +33,90 @@
         accessToken: 'pk.eyJ1IjoicXVpY2tzIiwiYSI6ImNpcTE1Z2xyYzAwMm1pMm0ybXFoMW1hdzAifQ.NQB9Oj5QISGyxJ9FTvNK3Q'
     }).addTo(mymap);
 
+    var geojsonMarkerOptions = {
+      radius: 10,
+      fillColor: "#ff7800",
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+    };
 
-  });
+
+
+
+    function onEachFeature(feature, layer) {
+      if (feature.properties && feature.properties.name) {
+            layer.bindPopup(feature.properties.name);
+          }
+      // layer.on({
+      //   click: function() {
+      //     // if (feature.properties && feature.properties.popupContent) {
+      //     //   layer.bindPopup(feature.properties.popupContent);
+      //     // }
+      //     }
+      // })
+    // does this feature have a property named popupContent?
+    // if (feature.properties && feature.properties.popupContent) {
+    //     layer.bindPopup(feature.properties.popupContent);
+    //     }
+    }
+    function addMarkers(markers) {
+      L.geoJson(markers, {
+         onEachFeature: onEachFeature,
+        pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, geojsonMarkerOptions);
+      }
+    }).addTo(mymap);
+
+      }
+    var someFeatures = ''
+    $.ajax({
+      url : '/geo_json_tender',
+      dataType: 'JSON',
+      success: function(data) {
+        addMarkers(data);
+
+       }
+
+    })
+    // var geojsonFeature = {
+    //   "type": "Feature",
+    //   "properties": {
+    //     "name": "Coors Field",
+    //     "amenity": "Baseball Stadium",
+    //     "popupContent": "This is where the Rockies play!"
+    //   },
+    //   "geometry": {
+    //     "type": "Point",
+    //     "coordinates": [31.2,48.5]
+    //   }
+    // };
+    // var someFeatures = [{
+    // "type": "Feature",
+    // "properties": {
+    //     "name": "Coors Field",
+    //     "show_on_map": true
+    // },
+    // "geometry": {
+    //     "type": "Point",
+    //     "coordinates": [31.2,49.5]
+    // }
+    // }, {
+    //   "type": "Feature",
+    //   "properties": {
+    //     "name": "Busch Field",
+    //     "show_on_map": false
+    //   },
+    //   "geometry": {
+    //     "type": "Point",
+    //     "coordinates": [31.2,48.5]
+    //   }
+    // }];
+
+    // L.geoJson(someFeatures, {
+    //   onEachFeature: onEachFeature,
+    //   pointToLayer: function (feature, latlng) {
+    //     return L.circleMarker(latlng, geojsonMarkerOptions);
+    //   }
+    // }).addTo(mymap);
