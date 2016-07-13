@@ -9,6 +9,7 @@
       = f.text_field :title,label: 'Назва тендеру'
       = f.text_area :description,label: 'Опис'
       = f.text_field :address, label: 'Адреса'
+      = f.select :category, Module::AdminManage::Category.all.map{ |cat| [ cat.title,cat.id ] } , label: 'Категорія'
       = f.text_field :contact_data,label: 'Контактні дані'
       = f.number_field :budget,label: 'Приблизний бюджет'
       = f.submit 'Зберегти'

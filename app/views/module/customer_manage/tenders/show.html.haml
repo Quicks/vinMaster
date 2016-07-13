@@ -1,8 +1,9 @@
 =link_to 'Мої тендери',module_customer_manage_tenders_path,class: 'btn btn-primary'
 
-
 %p
-  =@customer_tender.author
+  =@customer_tender.author.nick_name
+%p
+  =@customer_tender.category.title
 %p
   =@customer_tender.address
 %p

@@ -38,7 +38,7 @@ class Module::CustomerManage::TendersController < Module::ApplicationController
   end
 
   def customer_tender_params
-    params.require(:module_customer_manage_tender).permit(:address,:title, :description, :contact_data, :budget)
+    params.require(:module_customer_manage_tender).permit(:category,:address,:title, :description, :contact_data, :budget)
   end
 
 
