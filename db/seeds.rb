@@ -28,3 +28,21 @@ end
 other_categories.each do |other_category|
   Module::AdminManage::Category.new({title: other_category,p_id: parent_other_category.id}).save
 end
+categories = Module::AdminManage::Category.all.to_a
+authors = User.all.to_a
+streets = ['вул.Соборна','вул.Пирогова','вул.Магістратьська','вул.Київська']
+(0..100).map {
+  category = categories[rand(categories.size)]
+  author = authors[rand(authors.size)]
+  tender_hash = {
+    title: (0...20).map { ('a'..'z').to_a[rand(26)] }.join,
+    description: (0...50).map { ('a'..'z').to_a[rand(26)] }.join,
+    author: author,
+    category: category,
+    address: "м.Вінниця #{streets[rand(streets.size)]} #{rand(100) + 1}",
+    budget: rand(10000)
+  }
+  tender = Module::CustomerManage::Tender.new(tender_hash)
+  tender.save
+}
+
