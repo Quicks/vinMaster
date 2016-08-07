@@ -2,6 +2,7 @@
   = f.select :p_id,@parent_categories.map { |p_cat|[p_cat.title,p_cat.id]  },label: 'Виберіть категорію',prompt: 'Категорії'
   = f.text_field :alias,label: 'Аліас категорії'
   = f.text_field :title,label: 'Назва категорії'
+  = f.file_field :img, label: 'Картинка'
   = f.submit 'Зберегти'
 
 :javascript

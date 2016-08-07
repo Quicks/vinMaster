@@ -1,9 +1,11 @@
+
 %p#notice= notice
 
-%p
-  %b Title:
-  = @category.title
-
+.row
+  %p
+    = "Назва: #{@category.title}"
+  .col-md-2
+    = image_tag(@category.img.url,class: 'img-responsive category-img')
 = link_to 'Редагувати', edit_module_admin_manage_category_path(@category)
 \|
 = link_to 'Категорії', module_admin_manage_categories_path
