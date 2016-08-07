@@ -11,18 +11,19 @@
 -#=stylesheet_link_tag "leaflet/MarkerCluster"
 :scss
   #map{
-    height: 600px;
+    height: 80%;
+    //height: calc (100vh - 130px);
   }
 
 #map
 
 :javascript
     var markersLayer;
-    var mymap = L.map('map').setView([48.5, 31.2], 6);
+    var mymap = L.map('map').setView([49.23, 28.47], 9);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 16,
+        maxZoom: 20,
         id: 'quicks.0hf3cla6',
         accessToken: 'pk.eyJ1IjoicXVpY2tzIiwiYSI6ImNpcTE1Z2xyYzAwMm1pMm0ybXFoMW1hdzAifQ.NQB9Oj5QISGyxJ9FTvNK3Q'
     }).addTo(mymap);
