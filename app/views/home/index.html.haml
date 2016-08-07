@@ -2,7 +2,13 @@
 -#=javascript_include_tag "http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"
 =stylesheet_link_tag "leaflet/leaflet"
 =javascript_include_tag "leaflet/leaflet"
-
+=javascript_include_tag"https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"
+= stylesheet_link_tag 'http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css'
+= stylesheet_link_tag 'http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css'
+-#=javascript_include_tag "leaflet/leaflet.markercluster-src"
+-#=javascript_include_tag "leaflet/leaflet.markercluster"
+-#=stylesheet_link_tag "leaflet/MarkerCluster.Default"
+-#=stylesheet_link_tag "leaflet/MarkerCluster"
 :scss
   #map{
     height: 600px;
@@ -21,14 +27,14 @@
         accessToken: 'pk.eyJ1IjoicXVpY2tzIiwiYSI6ImNpcTE1Z2xyYzAwMm1pMm0ybXFoMW1hdzAifQ.NQB9Oj5QISGyxJ9FTvNK3Q'
     }).addTo(mymap);
 
-    var geojsonMarkerOptions = {
-      radius: 10,
-      fillColor: "#ff7800",
-      color: "#000",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.8
-    };
+    // var geojsonMarkerOptions = {
+    //   radius: 10,
+    //   fillColor: "#ff7800",
+    //   color: "#000",
+    //   weight: 1,
+    //   opacity: 1,
+    //   fillOpacity: 0.8
+    // };
 
     function onEachFeature(feature, layer) {
       if (feature.properties && feature.properties.title) {
@@ -36,13 +42,14 @@
       }
     }
     function addMarkers(markers) {
-      markersLayer = L.geoJson(markers, {
-           onEachFeature: onEachFeature,
-          pointToLayer: function (feature, latlng) {
-          return L.circleMarker(latlng, geojsonMarkerOptions);
-        }
+      markersLayer = L.markerClusterGroup();
+      var layer = L.geoJson(markers, {
+         onEachFeature: onEachFeature,
+        //   pointToLayer: function (feature, latlng) {
+        //   return L.circleMarker(latlng, geojsonMarkerOptions);
+        // }
       });
-
+      markersLayer.addLayer(layer);
       mymap.addLayer(markersLayer);
     }
 

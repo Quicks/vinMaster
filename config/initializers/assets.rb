@@ -11,3 +11,8 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( leaflet/leaflet.css )
 Rails.application.config.assets.precompile += %w( leaflet/leaflet.js )
+# Rails.application.config.assets.precompile += %w( leaflet/MarkerCluster.Default.css )
+# Rails.application.config.assets.precompile += %w( leaflet/MarkerCluster.css )
+# Rails.application.config.assets.precompile += %w( leaflet/leaflet.markercluster.js )
+# Rails.application.config.assets.precompile += %w( leaflet/leaflet.markercluster-src.js )
+
