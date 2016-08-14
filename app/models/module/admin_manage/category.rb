@@ -10,7 +10,7 @@ class Module::AdminManage::Category
   mount_uploader :img, TenderCategoriesUploader
 
   skip_callback :update, :before, :store_previous_model_for_img
-
+  validates_presence_of :img
   validates :alias, uniqueness: true,allow_blank: true
   validates :title, presence: true
 end

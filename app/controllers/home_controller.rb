@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @tenders = Module::CustomerManage::Tender.all
+    @tender_categories = Module::AdminManage::Category.all
+    # @tenders = Module::CustomerManage::Tender.all
   end
 
   def home

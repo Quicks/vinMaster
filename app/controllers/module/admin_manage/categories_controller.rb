@@ -56,7 +56,7 @@ class Module::AdminManage::CategoriesController < Module::AdminController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to module_admin_manage_categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
