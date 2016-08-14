@@ -9,7 +9,7 @@ class GeojsonController < ApplicationController
             type: 'Feature',
             properties: {
                 title: tender.title,
-                category: tender.category.to_s,
+                category: tender.category_id.to_s,
                 id: tender.id.to_s
             },
             geometry:{
