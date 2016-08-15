@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   get 'home/home'
   get 'home/contacts'
-
+  get 'tender/show_tender_info'
+  get 'tender/show_contacts/:id' => 'tender#show_contacts',as: 'tender_show_contacts'
+  # match 'tender/show_tender_contact' => 'tender#show_tender_contact'
   # resources :users
   # get 'users/show/:nick' => 'users#show', as: 'user_root'
 

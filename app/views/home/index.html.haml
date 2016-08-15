@@ -63,9 +63,42 @@
       // function for each feature events handler
       function onEachFeature(feature, layer) {
         // by default event is click
-        if (feature.properties && feature.properties.title) {
-              layer.bindPopup(feature.properties.title).openPopup();
+        layer.on({
+          click: function(e){
+            $.ajax({
+              url: 'tender/show_tender_info',
+              data: {id: feature.properties.id},
+              success: function(data){
+                layer.bindPopup(data).openPopup();
+              }
+
+            })
+
+          }
+        })
+        // if (feature.properties && feature.properties.title) {
+          // get more info by ajax request
+        //   $.ajax({
+        //     url: 'home/show_tender_info',
+        //     data: {id: feature.properties.id}
+        //   })
+        //   // layer.bindPopup(feature.properties.title).openPopup();
+        // }
+      }
+
+      var LeafIcon = L.Icon.extend({
+        options: {
+            // shadowUrl: 'leaf-shadow.png',
+            iconSize:     [28, 28],
+            shadowSize:   [50, 64],
+            iconAnchor:   [28, 28],
+            // shadowAnchor: [4, 62],
+            popupAnchor:  [-10, -28]
         }
+      });
+
+      function setIconByCategory(feature){
+        return $('.cat-img[data-category-id= "' +feature.properties.category + '"]').find('img').attr('src') || 'assets/default.png';
       }
       // init this.layer as marker cluster layer
       this.init = function(filter){
@@ -74,7 +107,11 @@
         var layer = L.geoJson(this.geoJson, {
           onEachFeature: onEachFeature,
           // add filter for layer(by default is empty)
-          filter: filter
+          filter: filter,
+          pointToLayer: function (feature, latlng) {
+            // {iconUrl: 'leaf-green.png'}
+            return L.marker(latlng, {icon: new LeafIcon({iconUrl: setIconByCategory(feature)})});
+        }
         });
 
         this.layer.addLayer(layer);
