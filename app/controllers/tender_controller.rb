@@ -1,14 +1,14 @@
 class TenderController < ApplicationController
   layout false
+  before_action :authenticate_user!, except: [:show_tender_info]
 
   def show_contacts
     @tender = Module::CustomerManage::Tender.find(params[:id])
-    @tender.review_counter = @tender.review_counter + 1
+    @tender.reviews << current_user
     @tender.save
   end
 
   def show_tender_info
     @tender = Module::CustomerManage::Tender.find(params[:id])
-    # render 'te/show_tender_info' ,layout: false
   end
 end

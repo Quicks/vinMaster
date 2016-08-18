@@ -10,7 +10,8 @@ class Module::CustomerManage::Tender
   field :contact_data, type: String
   field :finish_at, type: Date
   field :coordinates,type: Array
-  field :review_counter,type: Integer,default: 0
+
+  embeds_many :reviews, class_name: 'User'
   belongs_to :author,class_name: 'User'
   belongs_to :category,class_name: 'Module::AdminManage::Category'
   scope :get_by_author, -> (user){where(author: user)}

@@ -13,5 +13,4 @@ class HomeController < ApplicationController
   def authentication
   end
 
-
 end

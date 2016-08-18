@@ -31,4 +31,8 @@
     .tender-contact
       Контактні дані:
       .tender_show_contacts
-        = link_to 'Переглянути',tender_show_contacts_path(@tender),remote: true,class: 'tender_contacts'
+        -if user_signed_in?
+          = link_to 'Переглянути',tender_show_contacts_path(@tender),remote: true,class: 'tender_contacts'
+        -else
+          Потрібна
+          = link_to 'реєстрація',new_user_session_path
