@@ -27,8 +27,10 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title VinMaster
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    -#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    -#= javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     -# material design
@@ -84,7 +86,7 @@
         %p.notice= notice
         %p.alert= alert
       = yield
-    =render partial: 'layouts/modals/tender_comment_modal'
+    =render partial: 'layouts/modals/simple_modal'
     %footer.page-footer.blue.center-on-small-only#footer
       dsadsadda
       -#.container-fluid

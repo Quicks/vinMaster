@@ -291,6 +291,7 @@ DEPENDENCIES
   mongoid-rspec
   pry-rails
   rails (= 4.2.5)
+  responders
   role_model
   rspec-rails
   sass-rails (~> 5.0)

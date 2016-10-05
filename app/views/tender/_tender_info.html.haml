@@ -1,0 +1,77 @@
+:scss
+  .info-open{
+    .panel.panel-default{
+      .panel-heading{
+        .tender-title{
+          display: inline-block;
+          font-size: 15px;
+          color: #009688;
+        }
+        .least-content{
+          display: inline-block;
+          float: right;
+        }
+      }
+      .panel-body{
+        .list-group{
+          .list-group-item{
+            .row-content{
+              width: 100%;
+              .list-group-item-heading{
+                font-size: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+.panel.panel-default
+  %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+    %span{"aria-hidden" => "true"} &times;
+  .panel-heading
+    .tender-title= @tender.title
+    .least-content= "#{@tender.budget} грн."
+  .panel-body
+    .list-group
+      .list-group-item
+        -#.row-action-primary
+          -#%i.material-icons folder
+        .row-content
+          -#.least-content 10m
+          %h4.list-group-item-heading Адреса тендеру
+          %p.list-group-item-text= "#{@tender.address}"
+      .list-group-separator
+      .list-group-item
+        -#.row-action-primary
+        -#  %i.material-icons folder
+        .row-content
+          -#.least-content 8m
+          %h4.list-group-item-heading
+            Контактні дані:
+          %p.list-group-item-text
+            .tender_show_contacts
+              -if user_signed_in?
+                = link_to 'Переглянути',tender_show_contacts_path(@tender),remote: true,class: 'tender_contacts'
+              -else
+                Потрібна
+                = link_to 'реєстрація',new_user_session_path, remote: true
+      .list-group-separator
+      .list-group-item
+        -#.row-action-primary
+        -#  %i.material-icons folder
+        .row-content
+          -#.least-content= "#{@tender.budget} грн."
+          %h5.list-group-item-heading Опис
+          %p.list-group-item-text
+            = @tender.description
+      .list-group-separator
+
+:javascript
+  $(document).ready(function(){
+    $('.close').click(function(){
+      $(this).hide('slow')
+      $('.tender-short-info').removeClass('info-open');
+    });
+  })

@@ -10,5 +10,6 @@ class TenderController < ApplicationController
 
   def show_tender_info
     @tender = Module::CustomerManage::Tender.find(params[:id])
+    respond_with(@tender)
   end
 end

@@ -53,7 +53,9 @@ gem "mini_magick"
 # https://github.com/CanCanCommunity/cancancan
 gem 'cancancan', '~> 1.10'
 gem 'role_model'
-#
+
+#https://github.com/plataformatec/responders
+gem 'responders'
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

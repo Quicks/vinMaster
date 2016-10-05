@@ -1,0 +1,3 @@
+$('#simple_modal').find('.modal-body').html('<%= escape_javascript(render partial: 'form',layout: false,format: :html) %>');
+$('#simple_modal').find('#new_user').attr('data-remote',true);
+$('#simple_modal').modal();
